@@ -11,7 +11,7 @@ public class HomePage {
     }
 
     public By getPageLocator (String pageName) {
-        return By.xpath("//a[text()='"+pageName+"']");
+        return By.xpath("//a[text()='"+pageName+"'] | //span[text()='"+pageName+"']");
     }
 
 
@@ -20,7 +20,8 @@ public class HomePage {
 
 
 
-    public void openPage(String pageName) {
+    public void openPage(String pageName) throws InterruptedException {
         GenericPage.driver.findElement(getPageLocator(pageName)).click();
+        Thread.sleep(1000);
     }
 }

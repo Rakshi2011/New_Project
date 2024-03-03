@@ -27,7 +27,7 @@ public class MyStepdefs {
     }
 
     @When("User open {string} page")
-    public void userOpenPage(String pageName) {
+    public void userOpenPage(String pageName) throws InterruptedException {
         homePage.openPage(pageName);
     }
 
@@ -40,5 +40,10 @@ public class MyStepdefs {
     @When("User close the Browser")
     public void userCloseTheBrowser() {
        GenericPage.driver.quit();
+    }
+
+    @Then("User click on {string}")
+    public void userClickOn(String value) {
+        genericPage.clickOnPage(value);
     }
 }

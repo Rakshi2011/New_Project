@@ -5,6 +5,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -15,7 +16,9 @@ public class GenericPage {
  public GenericPage() {
  }
 
-
+public By getOppoPage(String pageName){
+     return By.xpath("//a[text()='"+pageName+"'] | //span[text()='"+pageName+"']");
+}
 
 
     public void loginToApplication(String appName) {
@@ -38,5 +41,9 @@ public class GenericPage {
         Assert.assertEquals("Page Title not matched\n Actual Title: "+GenericPage.driver.getTitle()+"\n " +
                         "Expected Title: Mobile Phones Online at Best Prices in India", "Mobile Phones Online at Best Prices in India",
                         GenericPage.driver.getTitle());
+    }
+
+    public void clickOnPage(String value) {
+     GenericPage.driver.findElement(getOppoPage(value)).click();
     }
 }
